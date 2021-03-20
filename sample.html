@@ -1,0 +1,29 @@
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tester</title>
+        <script>
+            var req = new XMLHttpRequest();
+            req.open("GET", "https://www.boardgamegeek.com/xmlapi2/forum?id=3581979&page=1", false);
+            req.send(null);
+        </script>
+    </head>
+    <body>
+        <p id="users"></p>
+        
+        <script>
+            var parser, xmlDoc, users, thread;
+            var text = req.responseText;
+            
+            parser = new DOMParser();
+            xmlDoc = parser.parseFromString(text, "text/xml");
+            
+            users = document.getElementById("users");
+            users.innerHTML = xmlDoc.getElementsByTagName("thread")[1].getAttribute('author');
+			</script>
+      
+    </body>
+</html>
+
