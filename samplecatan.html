@@ -1,0 +1,29 @@
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tester</title>
+        <script>
+            var req = new XMLHttpRequest();
+            req.open("GET", "https://www.boardgamegeek.com/xmlapi2/thing?id=013", false);
+            req.send(null);
+        </script>
+    </head>
+    <body>
+        <p id="catanName"></p>
+        
+        <script>
+            var parser, xmlDoc, catanName;
+            var text = req.responseText;
+            
+            parser = new DOMParser();
+            xmlDoc = parser.parseFromString(text, "text/xml");
+            
+            catanName = document.getElementById("catanName");
+            catanName.innerHTML = xmlDoc.getElementsByTagName("name")[0].getAttribute('value');
+			</script>
+      
+    </body>
+</html>
+
